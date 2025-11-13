@@ -42,7 +42,7 @@ Quit
 END
 
 ClockTick:
-DrawClock CurrentTime(TRUE, NONE, NONE, NONE)
+DrawClock CurrentTime#(TRUE, NONE, NONE, NONE)
 RETURN
 
 FUNCTION CurrentTime# (Advance, NewHour, NewMinute, NewSecond)
@@ -145,8 +145,8 @@ SUB Main
 DIM KeyCode AS STRING
 DIM Seconds AS DOUBLE
 
-   Seconds = CurrentTime(FALSE, GetHours(TIMER), GetMinutes(TIMER), GetSeconds(TIMER))
-   DrawClock CurrentTime(FALSE, NONE, NONE, NONE)
+   Seconds = CurrentTime#(FALSE, GetHours(TIMER), GetMinutes(TIMER), GetSeconds(TIMER))
+   DrawClock CurrentTime#(FALSE, NONE, NONE, NONE)
 
    LOCATE (CLOCKSIZE / 8) + 3, 1
    PRINT "   QBClock v1.02 - by: Peter Swinkels, ***2019***"
@@ -158,7 +158,7 @@ DIM Seconds AS DOUBLE
       LOOP WHILE KeyCode = ""
       SELECT CASE KeyCode
          CASE "a", "A"
-            Seconds = CurrentTime(FALSE, NONE, NONE, NONE)
+            Seconds = CurrentTime#(FALSE, NONE, NONE, NONE)
             IF KeyCode$ = "A" THEN
                IF GetHours(Seconds) = 11 THEN Seconds = 0 ELSE Seconds = Seconds + SECONDSPERHOUR
             ELSE
